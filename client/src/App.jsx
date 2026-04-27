@@ -7,6 +7,7 @@ import ClienteDettaglio from './pages/ClienteDettaglio';
 import Calcolatore from './pages/Calcolatore';
 import Risultati from './pages/Risultati';
 import Storico from './pages/Storico';
+import Chat from './pages/Chat';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="/calcolatore" element={<Calcolatore />} />
           <Route path="/risultati/:id" element={<Risultati />} />
           <Route path="/storico" element={<Storico />} />
+          <Route path="/chat" element={<Chat />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>

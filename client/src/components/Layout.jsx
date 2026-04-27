@@ -1,12 +1,12 @@
-import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDarkMode } from '../hooks/useDarkMode';
 
 const NAV = [
-  { to: '/', label: 'Dashboard', icon: '⊞' },
-  { to: '/clienti', label: 'Clienti', icon: '👥' },
-  { to: '/calcolatore', label: 'Calcolatore', icon: '⚡' },
-  { to: '/storico', label: 'Storico Calcoli', icon: '📋' }
+  { to: '/', label: 'Dashboard', icon: '▦' },
+  { to: '/clienti', label: 'Clienti', icon: '◉' },
+  { to: '/calcolatore', label: 'Simulazione', icon: '⚡' },
+  { to: '/storico', label: 'Storico', icon: '◷' },
+  { to: '/chat', label: 'Assistente AI', icon: '✦' },
 ];
 
 export default function Layout({ children }) {
@@ -14,55 +14,53 @@ export default function Layout({ children }) {
   const [dark, setDark] = useDarkMode();
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden bg-[#f9fafb] dark:bg-[#111111]">
       {/* Sidebar */}
-      <aside className="w-64 flex-shrink-0 bg-gray-900 dark:bg-gray-950 flex flex-col">
+      <aside className="w-60 flex-shrink-0 flex flex-col bg-[#171717] border-r border-[#222]">
         {/* Logo */}
-        <div className="px-6 py-5 border-b border-gray-800">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">FA</div>
+        <div className="px-5 py-5 border-b border-[#222]">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+              <span className="text-white text-xs font-bold tracking-tight">FA</span>
+            </div>
             <div>
-              <div className="text-white font-semibold text-sm">FA Advisor</div>
-              <div className="text-gray-400 text-xs">Analisi Sinistri</div>
+              <div className="text-white font-semibold text-sm leading-tight">FA Advisor</div>
+              <div className="text-[#666] text-[11px]">Analisi Assicurativa</div>
             </div>
           </div>
         </div>
 
         {/* Nav */}
-        <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-2 py-3 space-y-0.5 overflow-y-auto">
           {NAV.map(({ to, label, icon }) => {
             const active = to === '/' ? location.pathname === '/' : location.pathname.startsWith(to);
             return (
               <Link
                 key={to}
                 to={to}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                  active
-                    ? 'bg-blue-600 text-white'
-                    : 'text-gray-400 hover:text-white hover:bg-gray-800'
-                }`}
+                className={active ? 'nav-item-active' : 'nav-item'}
               >
-                <span className="text-base">{icon}</span>
-                {label}
+                <span className="w-5 text-center text-base opacity-80">{icon}</span>
+                <span>{label}</span>
               </Link>
             );
           })}
         </nav>
 
-        {/* Dark mode toggle */}
-        <div className="px-3 py-4 border-t border-gray-800">
+        {/* Bottom */}
+        <div className="px-2 py-3 border-t border-[#222] space-y-0.5">
           <button
             onClick={() => setDark(!dark)}
-            className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-400 hover:text-white hover:bg-gray-800 w-full transition-colors"
+            className="nav-item w-full"
           >
-            <span className="text-base">{dark ? '☀️' : '🌙'}</span>
-            {dark ? 'Modalità Chiara' : 'Modalità Scura'}
+            <span className="w-5 text-center text-base">{dark ? '○' : '●'}</span>
+            <span>{dark ? 'Tema chiaro' : 'Tema scuro'}</span>
           </button>
         </div>
       </aside>
 
-      {/* Main content */}
-      <main className="flex-1 overflow-y-auto bg-gray-50 dark:bg-gray-950">
+      {/* Main */}
+      <main className="flex-1 overflow-y-auto">
         {children}
       </main>
     </div>
