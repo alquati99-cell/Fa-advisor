@@ -5,4 +5,4 @@ pages_build_output_dir = "client/dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "fa-advisor-db"
-database_id = "YOUR_DATABASE_ID_HERE"
+database_id = "4fa7c0a4-5217-4256-8208-80742d3e9630"
