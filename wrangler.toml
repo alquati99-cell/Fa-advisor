@@ -1,0 +1,8 @@
+name = "fa-advisor"
+compatibility_date = "2024-04-05"
+pages_build_output_dir = "client/dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "fa-advisor-db"
+database_id = "YOUR_DATABASE_ID_HERE"
