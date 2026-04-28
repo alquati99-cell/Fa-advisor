@@ -5,7 +5,7 @@ import Clienti from './pages/Clienti';
 import ClienteForm from './pages/ClienteForm';
 import ClienteDettaglio from './pages/ClienteDettaglio';
 import Calcolatore from './pages/Calcolatore';
-import Risultati from './pages/Risultati';
+import Simulazione from './pages/Simulazione';
 import Storico from './pages/Storico';
 import Chat from './pages/Chat';
 
@@ -20,7 +20,8 @@ export default function App() {
           <Route path="/clienti/:id" element={<ClienteDettaglio />} />
           <Route path="/clienti/:id/modifica" element={<ClienteForm />} />
           <Route path="/calcolatore" element={<Calcolatore />} />
-          <Route path="/risultati/:id" element={<Risultati />} />
+          <Route path="/simulazione/:id" element={<Simulazione />} />
+          <Route path="/risultati/:id" element={<Navigate to="/" replace />} />
           <Route path="/storico" element={<Storico />} />
           <Route path="/chat" element={<Chat />} />
           <Route path="*" element={<Navigate to="/" replace />} />

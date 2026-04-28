@@ -40,7 +40,7 @@ export default function Calcolatore() {
         ...(['non_autosufficienza'].includes(tipoSinistro) ? { durata_non_autosufficienza: Number(extra.durata_non_autosufficienza) } : {})
       };
       const result = await api.calcola(payload);
-      navigate(`/risultati/${result.id}`);
+      navigate(`/simulazione/${result.id}`);
     } catch (err) {
       setError(err.message);
     } finally {
